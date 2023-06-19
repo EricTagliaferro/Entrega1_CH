@@ -22,7 +22,7 @@ Se realizo un chequeo de duplicados y se agregaron 2 variables (suma y counts).
 6)	Se creo la Tabla indicando los tipos y agregándole el comando de “if not exist” para que verifique primero si la tabla ya esta generada.
 7)	Con Spark.Write se cargo la información de la Tabla con las estadísticas de NBA en la Tabla de Redshift.
 
-#Reentregable E2
+Reentrega E2
 
 En base a los comentarios del Profesor se modifico el codigo para solo utilizar Spark y no hacer el mix con Pandas. Asi que se mantiene la explicacion del entregable2 pero lo realizado con Pandas se hizo con Spark.
 
