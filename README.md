@@ -166,13 +166,16 @@ Los archivos a tener en cuenta son:
     + Key: `spark_scripts_dir`
     + Value: `/opt/airflow/scripts`
 10. En la pestaña Admin -> Variables crear una nueva variable con los siguientes datos:
-    + Key: `spark_scripts_dir`
+    + Key: `Threshold_tiempo`
     + Value: `1`
-    + Puse el valor 1 como ejemplo se puede seleccionar otro threshold. Ver 
+    + Puse el valor 1 como ejemplo se puede seleccionar otro threshold. Ver tarea "Transformar_data" en el punto 12) 
 11. Ejecutar el DAG `Entregable3_Eric`
 12. Ejecutar las tareas en el orden dado:
     + Extraer_info
-       - Descarga la info de NBA de una API, genera una Tabla con esta informacion y lo guarda en un CSV.
-    + create_table
+       - Descarga la info de NBA de una API, genera una Tabla con esta informacion y lo guarda en un CSV. En el momento que se descarga la info de la API se realiza un control del tiempo de descarga vs un threshold cargada en la variable del punto 10), si el tiempo de ejecucion en ms supera el threshold se envia un mail de aviso. 
     + Transformar_data
+       - Se toma la informacion generada en la tarea anterior, se hace un chequeo de duplicados (enviando el resultado por email). Luego se hace una seleccion de columnas y se agregan 2 variables (suma y count). Finalemnte se selecionan los primeros 20 registros y se guarda en un csv.
+    + Crear_tabla
+       - Crear tabla en Redshift segun la informacion cargada en el archivo .env.
     + Enviar_Redshift
+       - Cargar la db generada en la tarea "Transformar_info"
