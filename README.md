@@ -168,9 +168,18 @@ Los archivos a tener en cuenta son:
 10. En la pestaña Admin -> Variables crear una nueva variable con los siguientes datos:
     + Key: `Threshold_tiempo`
     + Value: `1`
-    + Puse el valor 1 como ejemplo se puede seleccionar otro threshold. Ver tarea "Transformar_data" en el punto 12) 
-11. Ejecutar el DAG `Entregable3_Eric`
-12. Ejecutar las tareas en el orden dado:
+    + Puse el valor 1 como ejemplo se puede seleccionar otro threshold. Ver tarea "Transformar_data" en el punto 15)
+11. En la pestaña Admin -> Variables crear una nueva variable con los siguientes datos:
+    + Key: `SMTP_EMAIL_FROM`
+    + Value: `Cargar el mail desde donde saldran las alertas`
+12. En la pestaña Admin -> Variables crear una nueva variable con los siguientes datos:
+    + Key: `SMTP_PASSWORD`
+    + Value: `Cargar el password del mail cargado en la variable anterior`
+13. En la pestaña Admin -> Variables crear una nueva variable con los siguientes datos:
+    + Key: `SMTP_EMAIL_TO`
+    + Value: `Cargar el mail donde llegaran las alerta`
+14. Ejecutar el DAG `Entregable3_Eric`
+15. Ejecutar las tareas en el orden dado:
     + Extraer_info
        - Descarga la info de NBA de una API, genera una Tabla con esta informacion y lo guarda en un CSV. En el momento que se descarga la info de la API se realiza un control del tiempo de descarga vs un threshold cargada en la variable del punto 10), si el tiempo de ejecucion en ms supera el threshold se envia un mail de aviso. 
     + Transformar_data
